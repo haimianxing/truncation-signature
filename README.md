@@ -121,8 +121,8 @@ DeepSeek-R1-Distill-7B requires 2.0× more tokens to escape truncation but reach
 
 | Dataset | Size | Source |
 |---|---|---|
-| MATH | 200 problems (subset) | [Hendrycks et al., 2021](https://github.com/hendrycks/math) |
-| GSM8K | 200 problems (subset) | [Cobbe et al., 2021](https://huggingface.co/datasets/gsm8k) |
+| MATH | 200 problems (random seed per ex) | [Hendrycks et al., 2021](https://github.com/hendrycks/math) |
+| GSM8K | 200 problems (random seed per ex) | [Cobbe et al., 2021](https://huggingface.co/datasets/gsm8k) |
 | HumanEval | 164 problems | [Chen et al., 2021](https://github.com/openai/human-eval) |
 
 ### Full Results Data
