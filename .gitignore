@@ -1,0 +1,37 @@
+# Models and checkpoints
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth
+checkpoint-*/
+
+# Large data files
+*.tar.gz
+*.zip
+results_v2/*.json
+!results_sample/
+
+# Compiled artifacts (keep PDFs for paper)
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.eggs/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
