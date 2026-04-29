@@ -60,43 +60,11 @@ DeepSeek-R1-Distill-7B requires 2.0× more tokens to escape truncation but reach
 
 ## Architecture
 
-```
-┌─────────────────────────────────────────────────────────┐
-│           The Truncation Signature Framework             │
-├─────────────────────────────────────────────────────────┤
-│                                                         │
-│  ┌──────────────┐    ┌──────────────┐                   │
-│  │  LLM Output  │───▶│ Token Count  │                   │
-│  │  at Budget B │    │  ≤ B or = B? │                   │
-│  └──────────────┘    └──────┬───────┘                   │
-│                             │                           │
-│                    ┌────────┴────────┐                  │
-│                    │                 │                  │
-│              tok < B           tok ≈ B                 │
-│           (Natural Stop)     (Ceiling Hit)             │
-│                    │                 │                  │
-│              ┌─────▼─────┐   ┌───────▼──────┐          │
-│              │  Type B    │   │   Type A     │          │
-│              │  Reasoning │   │  Truncation  │          │
-│              │  Error     │   │  Error       │          │
-│              └─────┬──────┘   └───────┬──────┘          │
-│                    │                  │                  │
-│              Undetectable      Detectable (free)        │
-│              Irrecoverable     Recoverable (0–80%)      │
-│                    │                  │                  │
-│              ┌─────▼──────┐   ┌───────▼──────┐          │
-│              │    STOP     │   │  EXTEND BUDGET│         │
-│              │ 0/469 recov │   │ 438/803 recov │        │
-│              └────────────┘   └──────────────┘          │
-│                                                         │
-│  ┌─────────────────────────────────────────────┐        │
-│  │       Three-Zone Heuristic (free)           │        │
-│  │  Ceiling > 50%  → TRUNCATION (extend)       │        │
-│  │  Ceiling 10-50% → INFLECTION  (cautious)    │        │
-│  │  Ceiling < 10%  → EFFICIENT   (stop)        │        │
-│  └─────────────────────────────────────────────┘        │
-└─────────────────────────────────────────────────────────┘
-```
+<p align="center">
+  <img src="figures/fig_overview.jpeg" alt="The Truncation Signature Framework" width="100%">
+</p>
+
+<p align="center"><strong>The Truncation Signature Framework.</strong> (a) LLM outputs at budget B split by token count: ceiling-hit (tok ≈ B) vs. natural-stop (tok < B). (b) The Ratchet Effect: Type A (truncation) errors are detectable and recoverable (438/803); Type B (reasoning) errors are undetectable and irrecoverable (0/469). (c) Three-Zone budget heuristic based on ceiling rate, requiring no verifiers or training.</p>
 
 ## Repository Structure
 
@@ -107,6 +75,7 @@ DeepSeek-R1-Distill-7B requires 2.0× more tokens to escape truncation but reach
 │   ├── main_v3.pdf           # Compiled PDF
 │   └── neurips_2026.sty      # NeurIPS style file
 ├── figures/
+│   ├── fig_overview.jpeg     # Framework overview (Figure 1)
 │   ├── fig_overview.pdf      # Framework overview (Figure 1)
 │   ├── fig_ratchet_effect.pdf # Ratchet Effect (Figure 3)
 │   ├── fig_token_signal_roc.pdf # ROC curves (Figure 5)
