@@ -1,6 +1,6 @@
 # The Truncation Signature: Free Signals and Deterministic Heuristics for Efficient Test-Time Compute Scaling
 
-**Target Venue**: NeurIPS 2026
+
 
 **Paper**: [`paper/main_v3.pdf`](paper/main_v3.pdf)
 
