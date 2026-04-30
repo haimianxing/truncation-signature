@@ -1,8 +1,6 @@
 # The Truncation Signature: Free Signals and Deterministic Heuristics for Efficient Test-Time Compute Scaling
 
-
-
-**Paper**: [`paper/main_v3.pdf`](paper/main_v3.pdf)
+**Paper**: [`paper/The_Truncation_Signature.pdf`](paper/The_Truncation_Signature.pdf)
 
 ---
 
@@ -70,36 +68,29 @@ DeepSeek-R1-Distill-7B requires 2.0× more tokens to escape truncation but reach
 
 ```
 ├── paper/
-│   ├── main_v3.tex           # NeurIPS 2026 submission (latest)
-│   ├── main_v3_old.tex       # Pre-compression version (SAC 8.0)
-│   ├── main_v3.pdf           # Compiled PDF
-│   └── neurips_2026.sty      # NeurIPS style file
+│   └── The_Truncation_Signature.pdf   # Paper PDF
 ├── figures/
-│   ├── fig_overview.jpeg     # Framework overview (Figure 1)
-│   ├── fig_overview.pdf      # Framework overview (Figure 1)
-│   ├── fig_ratchet_effect.pdf # Ratchet Effect (Figure 3)
-│   ├── fig_token_signal_roc.pdf # ROC curves (Figure 5)
-│   └── fig_budget_spectrum_v3.pdf # Budget spectrum (Figure 6)
+│   ├── fig_overview.jpeg              # Framework overview (Figure 1)
+│   ├── fig_overview.pdf               # Framework overview (vector)
+│   ├── fig_ratchet_effect.pdf         # Ratchet Effect (Figure 3)
+│   ├── fig_token_signal_roc.pdf       # ROC curves (Figure 5)
+│   └── fig_budget_spectrum_v3.pdf     # Budget spectrum (Figure 6)
 ├── scripts/
-│   ├── gen_fig_ratchet.py    # Generate Ratchet Effect figure
-│   ├── gen_fig_token_signal_roc_all.py  # Generate ROC curves
-│   ├── gen_fig_budget_spectrum_v3.py    # Generate budget spectrum
-│   ├── analyze_overthinking_final.py    # Overthinking analysis
-│   ├── run_logprob_collection.py        # Log-probability collection
-│   ├── run_llama8b_math_logprob.py      # LLaMA-3-8B logprob
-│   ├── run_gemma9b_logprob.py           # Gemma-2-9B logprob
-│   ├── run_humaneval.py                 # HumanEval evaluation
-│   ├── run_overthinking_r1_efficient.py # R1-Distill experiments
-│   ├── run_efficiency_frontier_7b.py    # Efficiency frontier
-│   ├── run_multiseed_validation.py      # Multi-seed validation
-│   ├── run_sampling_ratchet.py          # Sampling ratchet (temp=0.7)
-│   ├── adaptive_routing_v2.py           # Adaptive budget routing
-│   └── ...                              # Additional analysis scripts
+│   ├── run_logprob_collection.py      # Log-probability collection
+│   ├── run_llama8b_math_logprob.py    # LLaMA-3-8B logprob
+│   ├── run_gemma9b_logprob.py         # Gemma-2-9B logprob
+│   ├── run_humaneval.py               # HumanEval evaluation
+│   ├── run_overthinking_r1_efficient.py  # R1-Distill experiments
+│   ├── run_efficiency_frontier_7b.py  # Efficiency frontier
+│   ├── run_multiseed_validation.py    # Multi-seed validation
+│   ├── run_sampling_ratchet.py        # Sampling ratchet (temp=0.7)
+│   ├── adaptive_routing_v2.py         # Adaptive budget routing
+│   └── ...                            # Additional analysis scripts
 ├── results_sample/
-│   ├── math_real_200.json    # MATH benchmark (200 problems)
-│   ├── gsm8k_real_200.json   # GSM8K benchmark (200 problems)
-│   ├── humaneval_164.json    # HumanEval benchmark (164 problems)
-│   └── example_result_format.json  # Example result format
+│   ├── math_real_200.json             # MATH benchmark (200 problems)
+│   ├── gsm8k_real_200.json            # GSM8K benchmark (200 problems)
+│   ├── humaneval_164.json             # HumanEval benchmark (164 problems)
+│   └── example_result_format.json     # Example result format
 └── README.md
 ```
 
@@ -121,8 +112,8 @@ DeepSeek-R1-Distill-7B requires 2.0× more tokens to escape truncation but reach
 
 | Dataset | Size | Source |
 |---|---|---|
-| MATH | 200 problems (random seed per ex) | [Hendrycks et al., 2021](https://github.com/hendrycks/math) |
-| GSM8K | 200 problems (random seed per ex) | [Cobbe et al., 2021](https://huggingface.co/datasets/gsm8k) |
+| MATH | 200 problems (subset) | [Hendrycks et al., 2021](https://github.com/hendrycks/math) |
+| GSM8K | 200 problems (subset) | [Cobbe et al., 2021](https://huggingface.co/datasets/gsm8k) |
 | HumanEval | 164 problems | [Chen et al., 2021](https://github.com/openai/human-eval) |
 
 ### Full Results Data
@@ -144,20 +135,6 @@ pip install torch transformers scikit-learn matplotlib numpy
 ```bash
 # Baseline evaluation (token count + correctness)
 python scripts/run_logprob_collection.py
-
-# Generate figures
-python scripts/gen_fig_ratchet.py
-python scripts/gen_fig_token_signal_roc_all.py
-python scripts/gen_fig_budget_spectrum_v3.py
-```
-
-3. Compile paper:
-```bash
-cd paper/
-# Using tectonic (recommended)
-tectonic main_v3.tex
-# Or XeLaTeX
-xelatex main_v3.tex
 ```
 
 ## Citation
@@ -166,11 +143,10 @@ xelatex main_v3.tex
 @article{truncation_signature_2026,
   title={The Truncation Signature: Free Signals and Deterministic Heuristics for Efficient Test-Time Compute Scaling},
   author={Anonymous},
-  journal={NeurIPS 2026 Submission},
   year={2026}
 }
 ```
 
 ## License
 
-This repository contains research artifacts for academic use. The paper is submitted to NeurIPS 2026.
+This repository contains research artifacts for academic use.
